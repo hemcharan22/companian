@@ -8,3 +8,4 @@ note: this is not final design the app may look differently in final production 
 # tech stack used 
 frontend: nextjs
 backend: firebase
+
