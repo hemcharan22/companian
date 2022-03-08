@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 
-import styles from "../styles/Home.module.css";
 import { useAuth } from "./api/auth";
 
 import Button from '@mui/material/Button';
@@ -14,7 +13,7 @@ export default function Home() {
   return (
    
 
-      <main className={styles.main}>
+      <main >
         
         {user ? (
           <>
