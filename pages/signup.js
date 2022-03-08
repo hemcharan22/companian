@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-import styles from "../styles/Home.module.css";
+
 import { useAuth } from "../pages/api/auth";
 import { setErrorMessage } from "../pages/api/setErrorMessage";
 
@@ -55,7 +55,7 @@ const Login = () => {
   // if there is no signed in user
   if (!auth.user) {
     return (
-      <div className={styles.container}>
+      <div >
           <h1>Signup</h1>
           <br/>
 
@@ -81,7 +81,7 @@ const Login = () => {
 
             <br/><br/><br/>
 
-            <Button type="submit" variant="contained" className={styles.margin}>Signup</Button>
+            <Button type="submit" variant="contained" >Signup</Button>
           
           </form>
            
