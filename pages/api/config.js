@@ -6,7 +6,7 @@ export const config = {
   authDomain: adept-amp-324009.firebaseapp.com,
   projectId: adept-amp-324009,
   storageBucket: adept-amp-324009.appspot.com,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  messagingSenderId: 594218645311,
   appId: 1:594218645311:web:9f8eb6494a1a5431bb858a,
   measurementId: G-6Q8L17CTNX,
 };
