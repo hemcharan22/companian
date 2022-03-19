@@ -1,11 +1,13 @@
 import { useState, useEffect, useContext, createContext } from "react";
 import { initializeApp, getApps } from "firebase/app";
-import { getAuth, onAuthStateChanged,
-         signInWithEmailAndPassword,
-         createUserWithEmailAndPassword, 
-         signOut as fSignOut, 
-         sendPasswordResetEmail as fSendPasswordResetEmail, 
-         confirmPasswordReset as fConfirmPasswordReset,
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut as fSignOut,
+  sendPasswordResetEmail as fSendPasswordResetEmail,
+  confirmPasswordReset as fConfirmPasswordReset,
 } from "firebase/auth";
 // Firestore (optional): uncomment the next line if you want to create a database for your users
 // import {

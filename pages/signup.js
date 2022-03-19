@@ -2,24 +2,15 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-
 import { useAuth } from "../pages/api/auth";
 import { setErrorMessage } from "../pages/api/setErrorMessage";
 
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Input from '@mui/material/Input';
-import FilledInput from '@mui/material/FilledInput';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Button from '@mui/material/Button';
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+
+import { signInWithGoogle } from "../pages/api/config";
+import { signInWithGithub } from "../pages/api/config";
 
 const Login = () => {
   const router = useRouter();
@@ -44,7 +35,7 @@ const Login = () => {
       });
   };
 
- 
+  // const auth = getAuth();
 
   // if a user is logged in, redirect to a page of your liking
   if (auth.user) {
@@ -55,43 +46,75 @@ const Login = () => {
   // if there is no signed in user
   if (!auth.user) {
     return (
-      <div >
-          <h1>Signup</h1>
-          <br/>
+      <div style={{ width: "300px", margin: "auto" , marginTop : "100px" }}>
+        <p>Signup</p>
 
-          <form  onSubmit={(event) => signUp(event, email, password)}> 
-          
-            <label><h2>Email Address</h2></label>
-            <TextField sx={{ width: 300 }} id="outlined-basic" label="Enter your email" variant="outlined" 
+        <Button
+          type="submit"
+          variant="outlined"
+          onClick={signInWithGoogle}
+          sx={{ marginBottom: "10px", width: "200px" }}
+        >
+          Sign-in with Google
+        </Button>
+
+        <Button
+          type="submit"
+          variant="outlined"
+          onClick={signInWithGithub}
+          sx={{ marginBottom: "10px", width: "200px" }}
+        >
+          Sign-in with Github
+        </Button>
+        {/* github not enabled enable it in the firebase console */}
+
+        <form onSubmit={(event) => signUp(event, email, password)}>
+          <label>
+            <p>Email Address</p>
+          </label>
+          <TextField
+            sx={{ width: 200 }}
+            fullWidth
+            id="outlined-basic"
+            label="Enter your email"
+            variant="outlined"
             type="email"
             name="email"
             placeholder="Enter your email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}/>
+            onChange={(event) => setEmail(event.target.value)}
+          />
 
-            <br/>
+          <br />
 
-            <label><h2>Password</h2></label>
-            <TextField sx={{ width: 300 }} id="outlined-basic" label="Enter your password" variant="outlined" 
+          <label>
+            <p>password</p>
+          </label>
+          <TextField
+            sx={{ width: 200 }}
+            id="outlined-basic"
+            label="Enter your password"
+            variant="outlined"
             type="password"
             name="password"
             placeholder="Enter your password"
             value={password}
-            onChange={(event) => setPassword(event.target.value)}/>
+            onChange={(event) => setPassword(event.target.value)}
+          />
 
-            <br/><br/><br/>
+          <br />
+          <br />
 
-            <Button type="submit" variant="contained" >Signup</Button>
-          
-          </form>
-           
-          <br/><br/>
-          <br/><br/>
+          <Button type="submit" variant="contained">
+            signup
+          </Button>
+        </form>
 
-          <Link href="/">&larr; Go back</Link> 
-          {/* &larr is the html charector for left arrow
-              https://www.w3schools.com/charsets/ref_utf_arrows.asp */}
-        
+        <br />
+
+        <a href="/"> <p>&larr; Go back</p> </a>
+        {/* &larr is the html charector for left arrow https://www.w3schools.com/charsets/ref_utf_arrows.asp */}
+      
       </div>
     );
   }
@@ -99,5 +122,6 @@ const Login = () => {
 
 export default Login;
 
-
-
+{
+  /* github not enabled enable it in the firebase console */
+}
