@@ -56,7 +56,7 @@ const  Profile = () => {
            
             
             <MenuItem >       
-              <a href="/user">profile</a>
+              <a href="/user/profile">profile</a>
             </MenuItem>
             <MenuItem>
               <a onClick={signOut}>log out</a>
