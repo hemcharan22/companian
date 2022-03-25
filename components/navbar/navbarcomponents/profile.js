@@ -31,7 +31,7 @@ const  Profile = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt ={user.email} src="/favicon.ico"/>
+                <Avatar alt ={user.email} src=''/>
                 </IconButton>
             </Tooltip> 
             

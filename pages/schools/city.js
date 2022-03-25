@@ -10,7 +10,6 @@ import {
   doc, onSnapshot, query, where
 } from "firebase/firestore";
 import Typedropdown from "../../components/dropdows/type";
-import selectedOptions from "../../components/dropdows/type";
 import Board from "../../components/dropdows/board";
 import State from "../../components/dropdows/state"
 
@@ -19,9 +18,6 @@ function App  ()  {
   // console.log(selectedOptions)
   const [schools, setSchools] = useState([]);
   const schoolsCollectionRef = collection(db, "schools");
-
-
-  const[stateOne, setStateOne]= useState("null")
     
   useEffect(() => {
     const getSchools = async () => {
@@ -30,13 +26,17 @@ function App  ()  {
     //   console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     // };
     let a = "chennai"
-    
-    console.log(stateOne) 
-    const q = query(collection(db, "schools"), where("board", "==", "state"));
+
+    if  (a) {
+    const q = query(collection(db, "schools"), 
+    where("board", "==", "state"), 
+    // where("city", "==", a)
+    );
     const data = await getDocs(q);
     setSchools(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-
+    // console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    }
+    
 };
 
 
@@ -52,13 +52,10 @@ function App  ()  {
       {
         schools.map((schools) => {
           return(
-            <>
-              
-              
+            <> 
               <h1>Name: {schools.name}</h1>
               <p> About: {schools.about}</p>
               <a>city: {schools.city}</a>
-
             </>
         )
       })}

@@ -12,6 +12,7 @@ function profile() {
         <>
           <p>Email: {user.email}</p>
           <p>UID: {user.uid}</p>
+          <img src={user.image} ></img>
           <Button variant="contained" onClick={signOut}>
             Log Out
           </Button>
