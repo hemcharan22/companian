@@ -123,5 +123,5 @@ const Login = () => {
 export default Login;
 
 {
-  /* github not enabled enable it in the firebase console */
+  /* github not enabled enable it in the firebase console for autentication */
 }
