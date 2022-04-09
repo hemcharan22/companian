@@ -3,8 +3,7 @@ import Filterbox from "../../components/filter/filterbox";
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Image from 'next/image'
-
+import Image from "next/image";
 
 import { Container } from "@mui/material";
 import { db } from "../api/config";
@@ -51,25 +50,32 @@ function Filterpros() {
 
     // if(schools==[]){console.log("schools=" , schools )}
 
-    function W (){
+    function W() {
       if (board && coed && schools.length == 0) {
-        return <div >
-        <img style={{maxWidth : '600px'}} src={"https://firebasestorage.googleapis.com/v0/b/adept-amp-324009.appspot.com/o/No%20data-rafiki.png?alt=media&token=5d66e3c5-ac1d-4cb3-bb01-03012302e1a8"}/>
-        </div>
-      }
-      else{
-        return <>
-        <p>select all the feilds</p></>
+        return (
+          <div>
+            <img
+              style={{ maxWidth: "600px" }}
+              src={
+                "https://firebasestorage.googleapis.com/v0/b/adept-amp-324009.appspot.com/o/No%20data-rafiki.png?alt=media&token=5d66e3c5-ac1d-4cb3-bb01-03012302e1a8"
+              }
+            />
+          </div>
+        );
+      } else {
+        return (
+          <>
+            <p>select all the feilds</p>
+          </>
+        );
       }
     }
 
-    console.log(schools)
+    console.log(schools);
 
     return (
       <>
-
         {board && coed && schools.length !== 0 ? (
-          
           <Container className="App">
             {schools.map((schools) => {
               return (
@@ -82,7 +88,10 @@ function Filterpros() {
             })}
           </Container>
         ) : (
-          <> <W/> </>
+          <>
+            {" "}
+            <W />{" "}
+          </>
         )}
       </>
     );
