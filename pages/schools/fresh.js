@@ -3,9 +3,8 @@ import Filterbox from "../../components/filter/filterbox";
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Image from "next/image";
-import CircularProgress from "@mui/material/CircularProgress";
-import LinearProgress from "@mui/material/LinearProgress";
+import Image from 'next/image'
+
 
 import { Container } from "@mui/material";
 import { db } from "../api/config";
@@ -35,10 +34,8 @@ function Filterpros() {
     const [schools, setSchools] = useState([]);
     const schoolsCollectionRef = collection(db, "schools");
 
-    const [loading, setLoading] = useState(false);
-
-    const app = async () => {
-      try {
+    useEffect(() => {
+      const getSchools = async () => {
         const q = query(
           collection(db, "schools"),
           where("board", "==", board),
@@ -46,63 +43,46 @@ function Filterpros() {
         );
         const data = await getDocs(q);
         setSchools(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
+        console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      };
 
-    useEffect(() => {
-      app();
+      getSchools();
     }, []);
 
-    function W() {
+    // if(schools==[]){console.log("schools=" , schools )}
+
+    function W (){
       if (board && coed && schools.length == 0) {
-        return (
-          <div>
-            <img
-              style={{ maxWidth: "600px" }}
-              src={
-                "https://firebasestorage.googleapis.com/v0/b/adept-amp-324009.appspot.com/o/No%20data-rafiki.png?alt=media&token=5d66e3c5-ac1d-4cb3-bb01-03012302e1a8"
-              }
-            />
-          </div>
-        );
-      } else {
-        return (
-          <>
-            <p>select all the feilds</p>
-          </>
-        );
+        return <div >
+        <img style={{maxWidth : '600px'}} src={"https://firebasestorage.googleapis.com/v0/b/adept-amp-324009.appspot.com/o/No%20data-rafiki.png?alt=media&token=5d66e3c5-ac1d-4cb3-bb01-03012302e1a8"}/>
+        </div>
+      }
+      else{
+        return <>
+        <p>select all the feilds</p></>
       }
     }
 
-    console.log(schools);
+    console.log(schools)
 
     return (
       <>
-        {loading ? (
-          <>
-            {board && coed && schools.length !== 0 ? (
-              <Container className="App">
-                {schools.map((schools) => {
-                  return (
-                    <>
-                      <h1>Name: {schools.name}</h1>
-                      <p> About: {schools.about}</p>
-                      <a>city: {schools.city}</a>
-                    </>
-                  );
-                })}
-              </Container>
-            ) : (
-              <> 
-                <W />
-              </>
-            )}
-          </>
+
+        {board && coed && schools.length !== 0 ? (
+          
+          <Container className="App">
+            {schools.map((schools) => {
+              return (
+                <>
+                  <h1>Name: {schools.name}</h1>
+                  <p> About: {schools.about}</p>
+                  <a>city: {schools.city}</a>
+                </>
+              );
+            })}
+          </Container>
         ) : (
-          <CircularProgress />
+          <> <W/> </>
         )}
       </>
     );
