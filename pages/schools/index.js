@@ -38,10 +38,7 @@ function App() {
 
   useEffect(() => {
     const getSchools = async () => {
-    //   const data = await getDocs(schoolsCollectionRef);
-    //   setSchools(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    //   console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    // };
+  
 
     const q = query(collection(db, "schools"), where("city", "==", "hrg"));
     const data = await getDocs(q);
